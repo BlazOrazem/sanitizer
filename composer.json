@@ -1,20 +1,29 @@
 {
-    "name": "blazorazem/sanitizer",
-    "description": "Convenient for sanitizing URLs, names, email addresses etc.",
-    "keywords": ["sanitize", "web-safe-url", "url"],
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Blaz Orazem",
-            "email": "blaz@orazem.info"
-        }
-    ],
-    "require": {
-        "php": ">=5.0.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "BlazOrazem\\": "src/"
-        }
+  "name": "blazorazem/sanitizer",
+  "type": "library",
+  "description": "Sanitizer is a package convenient for validating and sanitizing proper names, email addresses, URLs etc.",
+  "keywords": [
+    "sanitize",
+    "convert",
+    "url",
+    "web-safe",
+    "cyrillic"
+  ],
+  "homepage": "https://github.com/BlazOrazem/sanitizer",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Blaz Orazem",
+      "email": "blaz@orazem.info",
+      "homepage": "http://www.orazem.info"
     }
+  ],
+  "require": {
+    "php": ">=5.3.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "BlazOrazem\\": "src/"
+    }
+  }
 }
