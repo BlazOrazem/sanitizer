@@ -7,7 +7,7 @@
  * @author     Blaz Orazem <blaz@orazem.info>
  * @copyright  Copyright (c) 2015 Blaz Orazem (http://www.numencode.com)
  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
- * @version    1.1.0
+ * @version    1.2.0
  * @link       https://github.com/BlazOrazem/sanitizer
  * @since      1.0.0
  */
