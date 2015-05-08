@@ -16,9 +16,9 @@ Features on URL sanitizing
 --------------------------
 
  * Converts internal character encoding to UTF-8
+ * Replaces currency symbols
  * Replaces accented characters with corresponding unaccented characters
  * Replaces Cyrillic script characters with corresponding Latin script characters
- * Replaces currency symbols
  * Replace other reserved, unsafe and special characters
  * Converts to lower-case, trims and returns sanitized URL string
 
@@ -69,19 +69,19 @@ Sanitizer::email('CHUCK @norris?.COM');
 Sanitize URL
 <pre>
 Sanitizer::url('this Shőüld be \n sąn`itiz˘ed /// web-safe STRING/ with € cú˘rrenc~y at THE...END');
-// Returns: this-should-be-sanitized-/-web-safe-string/-with-eur-currency-at-the.end
+// Returns: this-should-be-sanitized-web-safe-string/-with-eur-currency-at-the.end
 </pre>
 
 Convert accented characters
 <pre>
 Sanitizer::url('Ŵĥăţ ĩş ŷōuř ñąmĕ? Mý ŉǎmę ĭŝ Ĉħǚçķ Ñöŕŗǐś.');
-// Returns: what-is-your-name-my-name-is-chuck-norris.
+// Returns: what-is-your-name-my-name-is-chuck-norris
 </pre>
 
 Convert Cyrillic script URL to Latin script
 <pre>
 Sanitizer::url('Как вас зовут? Меня зовут Чхучк Норрис.');
-// Returns: kak-vas-zovut-mena-zovut-chuck-norris.
+// Returns: kak-vas-zovut-mena-zovut-chuck-norris
 </pre>
 
 
