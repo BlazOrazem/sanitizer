@@ -1,7 +1,7 @@
 <?php namespace BlazOrazem;
 
 /**
- * Sanitizer is a package for sanitizing URLs, names, email addresses etc.
+ * Sanitizer is a package convenient for sanitizing proper names, email addresses, URLs etc.
  *
  * @package    Sanitizer
  * @author     Blaz Orazem <blaz@orazem.info>
@@ -24,7 +24,7 @@ class Sanitizer {
         if (!$string) return null;
 
         // Convert to lowercase, set UTF-8 character encoding, trim and return CamelCased string
-        return trim(ucwords(mb_strtolower(trim($string), 'utf-8')));
+        return trim(ucwords(mb_strtolower(trim($string), "UTF-8")));
     }
 
     /**
@@ -39,11 +39,11 @@ class Sanitizer {
         if (!$email) return null;
 
         // Convert to lowercase and set UTF-8 character encoding
-        $email = trim(mb_strtolower(trim($email), 'utf-8'));
+        $email = trim(mb_strtolower(trim($email), "UTF-8"));
 
         // Validate email address
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            return $errorMsg ?: 'Invalid e-mail address.';
+            return null;
         }
         // Return email address
         return $email;

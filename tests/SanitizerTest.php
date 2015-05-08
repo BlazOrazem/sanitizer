@@ -18,11 +18,11 @@ class SanitizerTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals($result, $email);
 
         $email = Sanitizer::email('CHUCK @norris?.COM');
-        $result = 'Invalid e-mail address.';
+        $result = null;
         $this->assertEquals($result, $email);
 
         $email = Sanitizer::email('CHUCK @norris?.COM', 'This is not a valid e-mail address!');
-        $result = 'This is not a valid e-mail address!';
+        $result = null;
         $this->assertEquals($result, $email);
     }
 

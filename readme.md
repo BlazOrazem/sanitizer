@@ -1,15 +1,14 @@
 Sanitizer
 =========
 
-Sanitizer is a package convenient for validating and sanitizing proper names
-(names of persons, places, or certain special things), email addresses, URLs etc.
+Sanitizer is a package convenient for sanitizing proper names (names of persons, places, or certain special things), email addresses, URLs etc.
 
 
 General features
 ----------------
 
  * Converts proper names (names of persons, places, or certain special things) to sanitized CamelCase format
- * Validates and converts email addresses to sanitized lower-cased email format
+ * Converts email addresses to sanitized lower-cased email format
  * Converts a string of characters to sanitized URL format
 
 
@@ -61,10 +60,10 @@ Sanitizer::email('CHUCK@norris.COM');
 // Returns: chuck@norris.com
 
 Sanitizer::email('CHUCK @norris?.COM');
-// Returns: Invalid e-mail address.
+// Returns: null
 
-Sanitizer::email('CHUCK @norris?.COM', 'This is not a valid e-mail address!');
-// Returns: This is not a valid e-mail address!
+Sanitizer::email('CHUCK @norris?.COM');
+// Returns: null
 </pre>
 
 Sanitize URL
