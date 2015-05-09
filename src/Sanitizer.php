@@ -7,7 +7,7 @@
  * @author     Blaz Orazem <blaz@orazem.info>
  * @copyright  Copyright (c) 2015 Blaz Orazem (http://www.numencode.com)
  * @license    http://opensource.org/licenses/MIT The MIT License (MIT)
- * @version    1.2.0
+ * @version    1.2.1
  * @link       https://github.com/BlazOrazem/sanitizer
  * @since      1.0.0
  */
@@ -65,16 +65,16 @@ class Sanitizer {
         $string = mb_strtolower(trim($string), "UTF-8");
 
         // Replace currency symbols
-        $string = strtr($string, array('؋'=>'lek','BZ$'=>'all','$b'=>'bob','лв'=>'bgn-kzt-kgs','R$'=>'brl',
-            '៛'=>'khr','¥'=>'cny-jpy','₡'=>'crc','₱'=>'cup-php','RD$'=>'dop','£'=>'gbp','€'=>'eur','¢'=>'ghc',
-            '﷼'=>'irr-omr-qar-sar-yer','₪'=>'ils','J$'=>'jmd','₩'=>'kpw-krw','₭'=>'lak','ден'=>'mkd','₮'=>'mnt',
-            'C$'=>'nio','₦'=>'ngn','zł'=>'pln','руб'=>'rub','Дин.'=>'rsd','NT$'=>'twd','฿'=>'thb','TT$'=>'ttd',
-            '₴'=>'uah','$U'=>'uyu','₫'=>'vnd','Z$'=>'zwd','$'=>'usd'));
+        $string = strtr($string, array('؋'=>'lek','bz$'=>'all','$b'=>'bob','лв'=>'bgn-kzt-kgs','r$'=>'brl',
+            '៛'=>'khr','¥'=>'cny-jpy','₡'=>'crc','₱'=>'cup-php','rd$'=>'dop','£'=>'gbp','€'=>'eur','¢'=>'ghc',
+            '﷼'=>'irr-omr-qar-sar-yer','₪'=>'ils','j$'=>'jmd','₩'=>'kpw-krw','₭'=>'lak','ден'=>'mkd','₮'=>'mnt',
+            'c$'=>'nio','₦'=>'ngn','zł'=>'pln','руб'=>'rub','Дин.'=>'rsd','nt$'=>'twd','฿'=>'thb','tt$'=>'ttd',
+            '₴'=>'uah','$u'=>'uyu','₫'=>'vnd','z$'=>'zwd','$'=>'usd'));
 
         // Replace accented characters with corresponding unaccented characters
         $string = strtr($string, array('À'=>'A','Á'=>'A','Â'=>'A','Ã'=>'A','Ä'=>'A','Å'=>'A','Æ'=>'AE','Ç'=>'C',
             'È'=>'E','É'=>'E','Ê'=>'E','Ë'=>'E','Ì'=>'I','Í'=>'I','Î'=>'I','Ï'=>'I','Ð'=>'D','Ñ'=>'N','Ò'=>'O',
-            'Ó'=>'O','Ô'=>'O','Õ'=>'O','Ö'=>'O','Ø'=>'O','Ù'=>'U','Ú'=>'U','Û'=>'U','Ü'=>'U','Ý'=>'Y','ß'=>'s',
+            'Ó'=>'O','Ô'=>'O','Õ'=>'O','Ö'=>'O','Ø'=>'O','Ù'=>'U','Ú'=>'U','Û'=>'U','Ü'=>'U','Ý'=>'Y','ß'=>'ss',
             'à'=>'a','á'=>'a','â'=>'a','ã'=>'a','ä'=>'a','å'=>'a','æ'=>'ae','ç'=>'c','è'=>'e','é'=>'e','ê'=>'e',
             'ë'=>'e','ì'=>'i','í'=>'i','î'=>'i','ï'=>'i','ñ'=>'n','ò'=>'o','ó'=>'o','ô'=>'o','õ'=>'o','ö'=>'o',
             'ø'=>'o','ù'=>'u','ú'=>'u','û'=>'u','ü'=>'u','ý'=>'y','ÿ'=>'y','Ā'=>'A','ā'=>'a','Ă'=>'A','ă'=>'a',
@@ -117,7 +117,7 @@ class Sanitizer {
 
         // Replace other reserved and unsafe characters
         $string = strtr($string, array(' '=>'-','%20'=>'-','&nbsp;'=>'-','&'=>'-','+'=>'-',','=>'-','//'=>'-',
-            ' /'=>'-','\r\n'=>'-','\n'=>'-',));
+            ' /'=>'-','\r\n'=>'-','\n'=>'-','-/-'=>'/'));
 
         // Replace other reserved, unsafe and special characters with RegEx
         $char_regex1 = '/[^a-z0-9\-.\/]/';	// Any character except: 'a' to 'z', '0' to '9', '\-', '.', '/'
@@ -128,7 +128,10 @@ class Sanitizer {
         $replace = array('', '-', '', '.');
         $string = preg_replace($search, $replace, $string);
 
-        // Remove possible dot at the beginning/end of the string
+        // Remove slash/dot at the beginning/end of the string
+        $string = strtr($string, array('-/-'=>'/'));
+        $string = ltrim($string, '/');
+        $string = rtrim($string, '/');
         $string = ltrim($string, '.');
         $string = rtrim($string, '.');
 
